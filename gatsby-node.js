@@ -6,8 +6,8 @@ exports.sourceNodes = async ({
   actions: { createNode },
   createContentDigest,
 }) => {
-    const result = await contributors(token, 'verdaccio', excludebots);
-    
+    const result = await contributors({token: token, organization: 'verdaccio', excludebots, allowFork: false, allowPrivateRepo: false});
+
     result.forEach((item) => {
         createNode({
             url: item.login,
